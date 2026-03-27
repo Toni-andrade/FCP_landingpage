@@ -3,24 +3,23 @@ export default function CTABand() {
     <section className="bg-navy py-20 lg:py-28 px-6 text-center">
       <div className="mx-auto max-w-2xl">
         <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
-          Ready to grow your business?
+          Ready to Fund Your Next Chapter?
         </h2>
         <p className="mt-4 text-lg text-soft">
-          Join the thousands of businesses that deserve better than a bank
-          rejection letter.
+          5-minute application. No credit score impact. Decision in 24 hours.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="https://app.frontiercapital.us"
-            className="rounded-lg bg-accent px-8 py-3.5 font-semibold text-white hover:bg-mid-navy transition"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:bg-mid-navy hover:scale-[1.02]"
           >
             Apply for Funding
           </a>
           <a
             href="mailto:info@frontiercapitalpartners.us"
-            className="rounded-lg border-2 border-white/60 px-8 py-3.5 font-semibold text-white hover:bg-white/10 transition"
+            className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:border-white"
           >
-            Contact Our Team
+            Questions? Contact Us
           </a>
         </div>
       </div>

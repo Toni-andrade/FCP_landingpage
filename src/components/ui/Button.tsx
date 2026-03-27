@@ -22,7 +22,7 @@ export function Button({ href, variant = "primary", children, className = "" }: 
 
   if (isExternal) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={`${base} ${styles[variant]} ${className}`}>
+      <a href={href} className={`${base} ${styles[variant]} ${className}`}>
         {children}
       </a>
     );

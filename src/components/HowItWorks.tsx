@@ -1,33 +1,32 @@
 "use client";
 
 import { useInView } from "@/lib/useInView";
-import { FileText, Brain, Banknote, Clock } from "lucide-react";
-import Link from "next/link";
+import { Link2, Brain, CheckCircle } from "lucide-react";
 
 const steps = [
   {
     number: 1,
-    title: "Apply Online",
-    icon: FileText,
+    title: "Connect Your Business",
+    icon: Link2,
     description:
-      "Complete our streamlined application. Connect your business bank account securely via Plaid. No mountains of paperwork \u2014 your cash flow tells the story.",
-    time: "5 minutes",
+      "Complete our 5-minute application and securely connect your business bank account via Plaid. We analyze your real cash flow \u2014 not just a credit report.",
+    chip: "Bank-level encryption \u00b7 No credential sharing",
   },
   {
     number: 2,
-    title: "AI-Powered Review",
+    title: "AI-Powered Underwriting",
     icon: Brain,
     description:
-      "Our AI underwriting agent analyzes your revenue patterns, cash flow stability, and business health using a 7-factor risk model. No arbitrary credit score cutoffs.",
-    time: "Same day",
+      "Our AI underwriting agent evaluates your revenue patterns, cash flow stability, and business health across 7 risk factors and 2,000+ data points. No arbitrary cutoffs \u2014 real analysis of your real business.",
+    chip: "Same-day review \u00b7 15-category transaction analysis",
   },
   {
     number: 3,
     title: "Get Funded",
-    icon: Banknote,
+    icon: CheckCircle,
     description:
-      "Receive your funding decision and capital deployment. Repayment adjusts to your actual revenue \u2014 because your business isn\u2019t a fixed-income bond.",
-    time: "24 hours",
+      "Receive your approval, review your terms, and get capital deployed. Repayment adjusts to your revenue through daily or weekly ACH \u2014 when your business does well, you pay more; when it slows, you pay less.",
+    chip: "Funds in 24 hours \u00b7 Revenue-based repayment",
   },
 ];
 
@@ -35,27 +34,23 @@ export function HowItWorks() {
   const { ref, isVisible } = useInView(0.15);
 
   return (
-    <section className="bg-light-bg section-padding px-6">
-      <div className="mx-auto max-w-7xl text-center">
-        {/* Section header */}
-        <p className="section-label">HOW IT WORKS</p>
+    <section id="how-it-works" className="bg-white section-padding px-6">
+      <div className="mx-auto max-w-[1200px] text-center">
+        <p className="section-label">How It Works</p>
         <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-navy mt-4">
-          From Application to Funding in Three Steps
+          From Application to <em className="italic">Funding</em> in Three Steps
         </h2>
 
-        {/* Steps grid */}
         <div
           ref={ref}
           className={`relative mt-16 transition-all duration-700 ease-out ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           {/* Horizontal connector line (desktop only) */}
           <div
             aria-hidden="true"
-            className="hidden md:block absolute top-8 left-1/6 right-1/6 h-0.5 bg-navy/20"
+            className="hidden md:block absolute top-8 h-0.5 bg-navy/15"
             style={{ left: "16.666%", right: "16.666%" }}
           />
 
@@ -65,19 +60,17 @@ export function HowItWorks() {
               return (
                 <div key={step.number} className="relative text-center">
                   {/* Numbered circle */}
-                  <div className="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-navy">
-                    <span className="text-lg font-bold text-white">
-                      {step.number}
-                    </span>
+                  <div className="relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-accent text-white">
+                    <span className="text-lg font-bold">{step.number}</span>
                   </div>
 
                   {/* Icon */}
                   <div className="mt-4 flex justify-center">
-                    <Icon className="size-6 text-accent" />
+                    <Icon className="size-6 text-navy/60" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="mt-6 text-xl font-semibold text-navy">
+                  <h3 className="mt-5 text-xl font-semibold text-navy">
                     {step.title}
                   </h3>
 
@@ -86,10 +79,9 @@ export function HowItWorks() {
                     {step.description}
                   </p>
 
-                  {/* Time indicator */}
-                  <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
-                    <Clock className="size-3.5" />
-                    {step.time}
+                  {/* Reassurance chip */}
+                  <span className="mt-4 inline-flex items-center rounded-full bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent">
+                    {step.chip}
                   </span>
                 </div>
               );
@@ -99,12 +91,12 @@ export function HowItWorks() {
 
         {/* CTA */}
         <div className="mt-14">
-          <Link
+          <a
             href="https://app.frontiercapital.us"
-            className="inline-block rounded-lg bg-accent px-8 py-3.5 font-semibold text-white transition hover:bg-mid-navy"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:bg-mid-navy hover:scale-[1.02]"
           >
-            Apply Now
-          </Link>
+            Start Your Application
+          </a>
         </div>
       </div>
     </section>

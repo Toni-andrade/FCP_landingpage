@@ -3,11 +3,11 @@
 import { useInView } from "@/lib/useInView";
 import {
   ShieldCheck,
-  Database,
   Lock,
-  Users,
+  Database,
   BadgeCheck,
-  ClipboardList,
+  ShieldX,
+  UserCheck,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -21,38 +21,36 @@ const cards: SecurityCard[] = [
   {
     icon: ShieldCheck,
     title: "Zero Trust Architecture",
-    description:
-      "Never trust, always verify. MFA mandatory, session validated per request.",
-  },
-  {
-    icon: Database,
-    title: "Row-Level Security",
-    description:
-      "RLS enforced on all 50+ database tables. Security-invoker on all views.",
+    description: "MFA mandatory, session validated per request.",
   },
   {
     icon: Lock,
     title: "AES-256 Encryption",
     description:
-      "Data encrypted at rest and in transit (TLS 1.2+). Plaid tokens encrypted with AES-256-GCM.",
+      "All data encrypted at rest (AES-256) and in transit (TLS 1.2+).",
   },
   {
-    icon: Users,
-    title: "4-Tier RBAC",
-    description:
-      "Super Admin \u2192 Admin \u2192 Analyst \u2192 Viewer. Least-privilege access at every level.",
+    icon: Database,
+    title: "Row-Level Security",
+    description: "Database-level access policies on all 50+ tables.",
   },
   {
     icon: BadgeCheck,
     title: "SOC 2 Infrastructure",
     description:
-      "Supabase, Vercel, Plaid, Resend \u2014 all SOC 2 Type II certified providers.",
+      "Supabase, Vercel, Plaid, Resend \u2014 all SOC 2 Type II certified.",
   },
   {
-    icon: ClipboardList,
-    title: "Immutable Audit Logging",
+    icon: ShieldX,
+    title: "No Data Sales",
     description:
-      "Complete trails for all staff and merchant actions. 15+ event types tracked.",
+      "We never sell your personal or financial information.",
+  },
+  {
+    icon: UserCheck,
+    title: "Your Rights",
+    description:
+      "Access, correct, delete, disconnect, or export your data at any time.",
   },
 ];
 
@@ -61,13 +59,11 @@ export default function SecuritySection() {
 
   return (
     <section id="security" className="bg-light-bg">
-      <div ref={ref} className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
-        <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-accent">
-            SECURITY &amp; COMPLIANCE
-          </p>
+      <div ref={ref} className="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
+        <div className={`text-center fade-up ${isVisible ? "visible" : ""}`}>
+          <p className="section-label">Security & Trust</p>
           <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-navy">
-            Enterprise-Grade from Day One
+            Your Data. Our Responsibility.
           </h2>
         </div>
 
@@ -79,7 +75,7 @@ export default function SecuritySection() {
             return (
               <div
                 key={card.title}
-                className="rounded-lg bg-white p-6 shadow-sm"
+                className="rounded-lg bg-white p-6 shadow-[0_2px_12px_rgba(33,51,99,0.08)]"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy">
                   <Icon className="size-5 text-white" />
@@ -97,9 +93,9 @@ export default function SecuritySection() {
 
         <div className={`fade-up ${isVisible ? "visible" : ""}`}>
           <p className="mt-10 mx-auto max-w-3xl text-center text-sm text-muted">
-            9 states with MCA disclosure laws (CA, NY, CT, UT, VA, FL, GA, KS,
-            MO) &mdash; compliance is a competitive moat as penalties reach
-            $10,000+ per violation.
+            Frontier complies with CCPA, GLBA, and IRS record retention requirements.
+            MCA disclosure laws in 9 states (CA, NY, CT, UT, VA, FL, GA, KS, MO) are
+            fully integrated into our compliance infrastructure.
           </p>
         </div>
       </div>

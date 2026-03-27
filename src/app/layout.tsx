@@ -16,12 +16,13 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Frontier Capital Partners | AI-Powered Capital for Small Businesses",
+  title: "Frontier Capital Partners | AI-Powered Funding for Small Businesses",
   description:
-    "Technology-driven merchant cash advance and working capital for America's underserved small businesses. AI-powered underwriting, 24-hour decisions, from $25K to $250K.",
+    "Working capital from $25K\u2013$250K for small businesses. AI-powered underwriting, 24-hour decisions, revenue-based repayment. Apply in 5 minutes with no credit score impact.",
   openGraph: {
-    title: "Frontier Capital Partners",
-    description: "Funding the businesses banks left behind.",
+    title: "Frontier Capital Partners | AI-Powered Funding for Small Businesses",
+    description:
+      "Working capital from $25K\u2013$250K for small businesses. AI-powered underwriting, 24-hour decisions, revenue-based repayment.",
     type: "website",
     url: "https://frontiercapitalpartners.us",
   },

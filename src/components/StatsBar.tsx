@@ -4,9 +4,10 @@ import { useInView } from "@/lib/useInView";
 import { CountUp } from "@/components/ui/CountUp";
 
 const stats = [
-  { end: 22, prefix: "$", suffix: "B", label: "MCA Market (2024)" },
-  { end: 127, prefix: "$", suffix: "B", label: "Addressable Opportunity" },
-  { end: 84, prefix: "", suffix: "%", label: "MCA Approval Rate vs. 14\u201330% Banks" },
+  { end: 84, suffix: "%", label: "Approval rate (vs. 14\u201330% at banks)" },
+  { text: "<24hr", label: "Application to decision" },
+  { text: "$25K\u2013$250K", label: "Funding range" },
+  { end: 0, text: "0", label: "Impact on your credit score to apply" },
 ];
 
 export default function StatsBar() {
@@ -16,31 +17,29 @@ export default function StatsBar() {
     <section className="bg-white">
       <div
         ref={ref}
-        className="mx-auto max-w-7xl px-6 py-16 grid grid-cols-2 md:grid-cols-4"
+        className="mx-auto max-w-[1200px] px-6 py-16 grid grid-cols-2 md:grid-cols-4"
       >
-        {stats.map((stat) => (
+        {stats.map((stat, i) => (
           <div
             key={stat.label}
-            className="border-r border-[#F0F3F8] last:border-0 p-6 md:p-8 text-center"
+            className={`p-6 md:p-8 text-center ${
+              i < stats.length - 1 ? "border-r border-light-bg" : ""
+            }`}
           >
-            <div className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[#213363]">
-              <CountUp
-                end={stat.end}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
-                started={isVisible}
-              />
+            <div className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-navy">
+              {stat.end !== undefined && stat.end > 0 ? (
+                <CountUp
+                  end={stat.end}
+                  suffix={stat.suffix || ""}
+                  started={isVisible}
+                />
+              ) : (
+                stat.text
+              )}
             </div>
-            <p className="mt-2 text-sm text-[#6B7B95]">{stat.label}</p>
+            <p className="mt-2 text-sm text-muted">{stat.label}</p>
           </div>
         ))}
-
-        <div className="p-6 md:p-8 text-center">
-          <div className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold text-[#213363]">
-            &lt;24hr
-          </div>
-          <p className="mt-2 text-sm text-[#6B7B95]">Application to Decision</p>
-        </div>
       </div>
     </section>
   );

@@ -6,10 +6,10 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "For Businesses", href: "#for-businesses" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Your Portal", href: "#your-portal" },
+  { label: "Why Frontier", href: "#why-frontier" },
   { label: "For Investors", href: "#for-investors" },
-  { label: "Platform", href: "#platform" },
-  { label: "About", href: "#security" },
 ];
 
 const APP_URL = "https://app.frontiercapital.us";
@@ -19,25 +19,15 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
@@ -51,7 +41,7 @@ export default function Header() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 flex items-center justify-between">
+        <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
@@ -65,43 +55,43 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/80 hover:text-[#3B82F6] transition-colors duration-200 font-[family-name:var(--font-sans)]"
+                className="relative text-sm text-white/80 hover:text-white transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-[#4B8BF5] after:transition-all after:duration-200 hover:after:w-full"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Desktop buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Desktop buttons + mobile buttons */}
+          <div className="flex items-center gap-3">
             <a
               href={APP_URL}
-              className="inline-flex items-center justify-center h-9 px-5 rounded-md border border-white/60 text-sm text-white hover:bg-white/10 transition-colors duration-200 font-[family-name:var(--font-sans)]"
+              className="hidden sm:inline-flex items-center justify-center h-9 px-5 rounded-md border border-white/60 text-sm text-white hover:bg-white/10 transition-colors duration-200"
             >
-              Login
+              Log In
             </a>
             <a
               href={APP_URL}
-              className="inline-flex items-center justify-center h-9 px-5 rounded-md bg-[#3B82F6] text-sm text-white hover:bg-[#3B82F6]/85 transition-colors duration-200 font-[family-name:var(--font-sans)]"
+              className="inline-flex items-center justify-center h-9 px-5 rounded-md bg-[#4B8BF5] text-sm font-semibold text-white hover:bg-[#4B8BF5]/85 transition-colors duration-200"
             >
               Apply Now
             </a>
-          </div>
 
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="lg:hidden flex items-center justify-center w-10 h-10 text-white"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            {/* Mobile hamburger */}
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              className="lg:hidden flex items-center justify-center w-10 h-10 text-white ml-1"
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -119,8 +109,8 @@ export default function Header() {
         className={`fixed top-0 right-0 z-50 h-full w-72 max-w-[80vw] bg-[#0F1B35] shadow-2xl shadow-black/40 transition-transform duration-300 ease-in-out lg:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        aria-label="Mobile navigation"
       >
-        {/* Drawer close button */}
         <div className="flex items-center justify-end h-16 px-5">
           <button
             type="button"
@@ -138,7 +128,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="text-base text-white/80 hover:text-[#3B82F6] transition-colors duration-200 py-3 border-b border-white/10 font-[family-name:var(--font-sans)]"
+              className="text-base text-white/80 hover:text-[#4B8BF5] transition-colors duration-200 py-3 border-b border-white/10"
             >
               {link.label}
             </a>
@@ -147,13 +137,13 @@ export default function Header() {
           <div className="flex flex-col gap-3 pt-6">
             <a
               href={APP_URL}
-              className="inline-flex items-center justify-center h-11 rounded-md border border-white/60 text-sm text-white hover:bg-white/10 transition-colors duration-200 font-[family-name:var(--font-sans)]"
+              className="inline-flex items-center justify-center h-11 rounded-md border border-white/60 text-sm text-white hover:bg-white/10 transition-colors duration-200"
             >
-              Login
+              Log In
             </a>
             <a
               href={APP_URL}
-              className="inline-flex items-center justify-center h-11 rounded-md bg-[#3B82F6] text-sm text-white hover:bg-[#3B82F6]/85 transition-colors duration-200 font-[family-name:var(--font-sans)]"
+              className="inline-flex items-center justify-center h-11 rounded-md bg-[#4B8BF5] text-sm font-semibold text-white hover:bg-[#4B8BF5]/85 transition-colors duration-200"
             >
               Apply Now
             </a>

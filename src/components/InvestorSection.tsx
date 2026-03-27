@@ -2,158 +2,95 @@
 
 import { useInView } from "@/lib/useInView";
 
-interface TierData {
-  label: string;
-  size: string;
-  desc: string;
-  color: string;
-}
-
-const tiers: TierData[] = [
-  {
-    label: "Tier 1 — High Quality",
-    size: "$56B",
-    desc: "2–3M businesses, $500K–$5M revenue, FICO 620–680",
-    color: "bg-[#2EAF6E]",
-  },
-  {
-    label: "Tier 2 — Moderate Risk",
-    size: "$50B",
-    desc: "3–5M businesses, $200K–$500K revenue, FICO 550–620",
-    color: "bg-[#3B82F6]",
-  },
-  {
-    label: "Tier 3 — Higher Risk",
-    size: "$21B",
-    desc: "2–4M businesses, $100K–$200K revenue, FICO <550",
-    color: "bg-[#213363]",
-  },
+const tiers = [
+  { label: "Tier 1 \u2014 High Quality", size: "$56B", businesses: "2\u20133M businesses" },
+  { label: "Tier 2 \u2014 Moderate Risk", size: "$50B", businesses: "3\u20135M businesses" },
+  { label: "Tier 3 \u2014 Higher Risk", size: "$21B", businesses: "2\u20134M businesses" },
 ];
 
-interface PhaseData {
-  badge: string;
-  title: string;
-  desc: string;
-}
-
-const phases: PhaseData[] = [
-  {
-    badge: "NOW",
-    title: "MCA + AI Underwriting",
-    desc: "Fast capital via revenue-based advances. Claude AI + Plaid stack.",
-  },
-  {
-    badge: "12 MO",
-    title: "Client Tools + Dashboard",
-    desc: "Cash flow forecasting, repayment tracking, financial health scoring.",
-  },
-  {
-    badge: "18 MO",
-    title: "Business Banking",
-    desc: "Checking/savings via BaaS partnership. Capture deposits.",
-  },
-  {
-    badge: "24 MO",
-    title: "Lending License + SBA",
-    desc: "SBA 7(a) access. Lower rates for clients. Government guarantees.",
-  },
-  {
-    badge: "36-48 MO",
-    title: "Bank Charter",
-    desc: "Full-stack: cards, deposits, lending under one roof. Own our destiny.",
-  },
+const roadmap = [
+  { badge: "NOW", title: "MCA + AI Underwriting" },
+  { badge: "12\u201324 MO", title: "Product Expansion" },
+  { badge: "24\u201336 MO", title: "SBA License" },
+  { badge: "36+ MO", title: "Bank Charter" },
 ];
 
 export default function InvestorSection() {
   const { ref, isVisible } = useInView();
 
   return (
-    <section id="for-investors" className="bg-white">
-      <div ref={ref} className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
-        <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#3B82F6]">
-            FOR INVESTORS
-          </p>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-[#213363]">
-            $150–300B Structural Credit Gap. One Thesis.
+    <section id="for-investors" className="bg-dark">
+      <div className="h-1 w-full bg-accent" />
+      <div ref={ref} className="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
+        <div className={`text-center fade-up ${isVisible ? "visible" : ""}`}>
+          <p className="section-label-light">For Investors</p>
+          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
+            $127 Billion Market. One Structural Thesis.
           </h2>
         </div>
 
         <div
-          className={`mt-12 grid grid-cols-1 lg:grid-cols-2 gap-12 fade-up-children ${isVisible ? "visible" : ""}`}
+          className={`mt-12 grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 fade-up ${isVisible ? "visible" : ""}`}
         >
-          {/* Left column — Market Thesis */}
-          <div className="text-[15px] leading-relaxed text-[#6B7B95]">
-            <p>
+          {/* Left — Market Thesis (3/5) */}
+          <div className="lg:col-span-3">
+            <p className="text-[15px] leading-relaxed text-soft">
               Every major fintech moved upmarket.{" "}
-              <span className="font-semibold text-[#213363]">Ramp</span> ($32B
-              valuation) targets mid-market finance teams.{" "}
-              <span className="font-semibold text-[#213363]">Brex</span> was
-              acquired by Capital One for $5.15B after abandoning SMBs in 2022.{" "}
-              <span className="font-semibold text-[#213363]">Flex</span> rejects
-              97% of applicants with a &ldquo;super prime&rdquo; filter.{" "}
-              <span className="font-semibold text-[#213363]">Slash</span>{" "}
-              outsources lending entirely.
-            </p>
-            <p className="mt-4 text-lg font-semibold text-[#213363]">
-              AI underwriting targeting sub-6% defaults. $150–300B structural
-              credit gap. Institutional-grade compliance from day one.
+              <span className="font-semibold text-white">Ramp</span> ($32B) targets
+              enterprise finance teams.{" "}
+              <span className="font-semibold text-white">Brex</span> ($5.15B) was
+              acquired by Capital One after abandoning SMBs.{" "}
+              <span className="font-semibold text-white">Flex</span> rejects 97% of
+              applicants. The sub-$2M revenue segment&nbsp;&mdash; 8.7&nbsp;million
+              businesses declined by banks annually, generating $150&ndash;300&nbsp;billion
+              in unfulfilled demand&nbsp;&mdash; is the market they all left behind.
+              Frontier&apos;s AI underwriting stack targets sub-6% defaults (vs.
+              8&ndash;12% industry average), turning the highest-quality slice of that
+              market into institutional-grade returns.
             </p>
           </div>
 
-          {/* Right column — Market Sizing Cards */}
-          <div className="space-y-4">
+          {/* Right — Tier Cards (2/5) */}
+          <div className="lg:col-span-2 space-y-3">
             {tiers.map((tier) => (
               <div
                 key={tier.label}
-                className="overflow-hidden rounded-lg bg-[#F7F9FC] p-6"
+                className="rounded-lg bg-white/5 border border-white/10 p-5"
               >
-                <div className={`-mx-6 -mt-6 mb-4 h-1 w-[calc(100%+3rem)] ${tier.color} rounded-t-lg`} />
-                <p className="text-sm font-bold text-[#213363]">
+                <p className="text-xs font-bold uppercase tracking-wider text-soft/70">
                   {tier.label}
                 </p>
-                <p className="mt-1 font-[family-name:var(--font-display)] text-3xl text-[#213363]">
+                <p className="mt-1 font-[family-name:var(--font-display)] text-3xl text-white">
                   {tier.size}
                 </p>
-                <p className="mt-1 text-sm text-[#6B7B95]">{tier.desc}</p>
+                <p className="mt-0.5 text-sm text-soft/60">{tier.businesses}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Strategic Roadmap */}
-        <div className={`mt-16 fade-up ${isVisible ? "visible" : ""}`}>
-          <h3 className="text-center font-[family-name:var(--font-display)] text-2xl text-[#213363]">
-            Strategic Roadmap
-          </h3>
-
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {phases.map((phase) => (
-              <div
-                key={phase.badge}
-                className="relative rounded-lg bg-[#F7F9FC] p-6"
-              >
-                <span className="inline-flex rounded-full bg-[#213363] px-3 py-1 text-xs font-bold text-white">
-                  {phase.badge}
-                </span>
-                <p className="mt-3 text-lg font-semibold text-[#213363]">
-                  {phase.title}
-                </p>
-                <p className="mt-2 text-sm text-[#6B7B95]">{phase.desc}</p>
+        {/* Compact roadmap */}
+        <div className={`mt-14 fade-up ${isVisible ? "visible" : ""}`}>
+          <div className="flex flex-wrap justify-center gap-3">
+            {roadmap.map((phase, i) => (
+              <div key={phase.badge} className="flex items-center gap-3">
+                <div className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2">
+                  <span className="text-xs font-bold text-accent">{phase.badge}</span>
+                  <span className="text-sm text-soft">{phase.title}</span>
+                </div>
+                {i < roadmap.length - 1 && (
+                  <span className="text-white/20 hidden sm:inline" aria-hidden="true">&rarr;</span>
+                )}
               </div>
             ))}
           </div>
-
-          <p className="text-sm text-[#6B7B95] text-center mt-6">
-            Each stage compounds data and trust. The businesses we serve today become the banking customers of tomorrow.
-          </p>
         </div>
 
         {/* CTA */}
-        <div className={`mt-12 text-center fade-up ${isVisible ? "visible" : ""}`}>
+        <div className="mt-12 text-center">
           <a
             href="mailto:info@frontiercapitalpartners.us"
-            className="inline-block rounded-lg bg-[#3B82F6] px-8 py-3.5 font-semibold text-white transition hover:bg-[#2E4A8A]"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-mid-navy hover:scale-[1.02]"
           >
             Request Investor Materials
           </a>
