@@ -3,9 +3,9 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 
 const stats = [
   "$150–300B credit gap",
-  "33M small businesses",
-  "42% with unmet needs",
-  "14–30% bank approval",
+  "8.7M businesses denied annually",
+  "56% rejected or underfunded",
+  "Sub-6% default targeting",
 ];
 
 export function Hero() {
@@ -20,7 +20,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(75,139,245,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(75,139,245,.5) 1px, transparent 1px)",
+            "linear-gradient(rgba(59,130,246,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,.5) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -36,9 +36,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-lg text-soft md:text-xl">
-              AI-powered underwriting. 24-hour decisions. Capital for the 8.7
-              million small businesses America&apos;s banking system fails every
-              year.
+              Your bank said no. We look deeper. AI-powered underwriting and
+              24-hour decisions for the 8.7&nbsp;million small businesses
+              America&apos;s banking system fails every year.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">

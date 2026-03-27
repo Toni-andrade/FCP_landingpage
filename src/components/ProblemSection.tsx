@@ -44,7 +44,7 @@ export default function ProblemSection() {
     <section id="for-businesses" className="bg-white">
       <div ref={ref} className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
         <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#4B8BF5]">
+          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#3B82F6]">
             FOR BUSINESSES
           </p>
           <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-[#213363]">
@@ -60,7 +60,7 @@ export default function ProblemSection() {
             return (
               <div
                 key={card.title}
-                className="rounded-lg border-l-4 border-[#4B8BF5] bg-[#F7F9FC] p-6"
+                className="rounded-lg border-l-4 border-[#3B82F6] bg-[#F8FAFC] p-6"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#213363]">
                   <Icon className="size-5 text-white" />

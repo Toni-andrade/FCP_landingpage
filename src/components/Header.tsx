@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -53,10 +54,14 @@ export default function Header() {
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="shrink-0">
-            <span className="font-[family-name:var(--font-display)] text-white uppercase tracking-[0.15em] text-lg leading-tight">
-              <span className="hidden sm:inline">Frontier Capital Partners</span>
-              <span className="sm:hidden">FCP</span>
-            </span>
+            <Image
+              src="/brand/logo-dark.png"
+              alt="Frontier Capital Partners"
+              width={200}
+              height={50}
+              className="h-8 sm:h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -65,7 +70,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/80 hover:text-[#4B8BF5] transition-colors duration-200 font-[family-name:var(--font-sans)]"
+                className="text-sm text-white/80 hover:text-[#3B82F6] transition-colors duration-200 font-[family-name:var(--font-sans)]"
               >
                 {link.label}
               </a>
@@ -82,7 +87,7 @@ export default function Header() {
             </a>
             <a
               href={APP_URL}
-              className="inline-flex items-center justify-center h-9 px-5 rounded-md bg-[#4B8BF5] text-sm text-white hover:bg-[#4B8BF5]/85 transition-colors duration-200 font-[family-name:var(--font-sans)]"
+              className="inline-flex items-center justify-center h-9 px-5 rounded-md bg-[#3B82F6] text-sm text-white hover:bg-[#3B82F6]/85 transition-colors duration-200 font-[family-name:var(--font-sans)]"
             >
               Apply Now
             </a>
@@ -133,7 +138,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="text-base text-white/80 hover:text-[#4B8BF5] transition-colors duration-200 py-3 border-b border-white/10 font-[family-name:var(--font-sans)]"
+              className="text-base text-white/80 hover:text-[#3B82F6] transition-colors duration-200 py-3 border-b border-white/10 font-[family-name:var(--font-sans)]"
             >
               {link.label}
             </a>
@@ -148,7 +153,7 @@ export default function Header() {
             </a>
             <a
               href={APP_URL}
-              className="inline-flex items-center justify-center h-11 rounded-md bg-[#4B8BF5] text-sm text-white hover:bg-[#4B8BF5]/85 transition-colors duration-200 font-[family-name:var(--font-sans)]"
+              className="inline-flex items-center justify-center h-11 rounded-md bg-[#3B82F6] text-sm text-white hover:bg-[#3B82F6]/85 transition-colors duration-200 font-[family-name:var(--font-sans)]"
             >
               Apply Now
             </a>

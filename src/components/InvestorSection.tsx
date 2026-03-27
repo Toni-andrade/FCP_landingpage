@@ -20,7 +20,7 @@ const tiers: TierData[] = [
     label: "Tier 2 — Moderate Risk",
     size: "$50B",
     desc: "3–5M businesses, $200K–$500K revenue, FICO 550–620",
-    color: "bg-[#4B8BF5]",
+    color: "bg-[#3B82F6]",
   },
   {
     label: "Tier 3 — Higher Risk",
@@ -40,22 +40,27 @@ const phases: PhaseData[] = [
   {
     badge: "NOW",
     title: "MCA + AI Underwriting",
-    desc: "Revenue-based funding with AI-powered decisioning",
+    desc: "Fast capital via revenue-based advances. Claude AI + Plaid stack.",
   },
   {
-    badge: "12–24 MONTHS",
-    title: "Product Expansion",
-    desc: "Line of credit products, enhanced simulation tools",
+    badge: "12 MO",
+    title: "Client Tools + Dashboard",
+    desc: "Cash flow forecasting, repayment tracking, financial health scoring.",
   },
   {
-    badge: "24–36 MONTHS",
-    title: "SBA License + Banking",
-    desc: "SBA lending authorization, banking partnerships",
+    badge: "18 MO",
+    title: "Business Banking",
+    desc: "Checking/savings via BaaS partnership. Capture deposits.",
   },
   {
-    badge: "36+ MONTHS",
+    badge: "24 MO",
+    title: "Lending License + SBA",
+    desc: "SBA 7(a) access. Lower rates for clients. Government guarantees.",
+  },
+  {
+    badge: "36-48 MO",
     title: "Bank Charter",
-    desc: "Full banking charter application and deployment",
+    desc: "Full-stack: cards, deposits, lending under one roof. Own our destiny.",
   },
 ];
 
@@ -66,11 +71,11 @@ export default function InvestorSection() {
     <section id="for-investors" className="bg-white">
       <div ref={ref} className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
         <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#4B8BF5]">
+          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#3B82F6]">
             FOR INVESTORS
           </p>
           <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-[#213363]">
-            $127 Billion Market. One Structural Thesis.
+            $150–300B Structural Credit Gap. One Thesis.
           </h2>
         </div>
 
@@ -91,9 +96,8 @@ export default function InvestorSection() {
               outsources lending entirely.
             </p>
             <p className="mt-4 text-lg font-semibold text-[#213363]">
-              The largest underserved segment — sub-$2M revenue businesses
-              needing $25K–$250K in working capital — is the one they all left
-              behind. That&apos;s our market.
+              AI underwriting targeting sub-6% defaults. $150–300B structural
+              credit gap. Institutional-grade compliance from day one.
             </p>
           </div>
 
@@ -123,7 +127,7 @@ export default function InvestorSection() {
             Strategic Roadmap
           </h3>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {phases.map((phase) => (
               <div
                 key={phase.badge}
@@ -139,13 +143,17 @@ export default function InvestorSection() {
               </div>
             ))}
           </div>
+
+          <p className="text-sm text-[#6B7B95] text-center mt-6">
+            Each stage compounds data and trust. The businesses we serve today become the banking customers of tomorrow.
+          </p>
         </div>
 
         {/* CTA */}
         <div className={`mt-12 text-center fade-up ${isVisible ? "visible" : ""}`}>
           <a
             href="mailto:info@frontiercapitalpartners.us"
-            className="inline-block rounded-lg bg-[#4B8BF5] px-8 py-3.5 font-semibold text-white transition hover:bg-[#2E4A8A]"
+            className="inline-block rounded-lg bg-[#3B82F6] px-8 py-3.5 font-semibold text-white transition hover:bg-[#2E4A8A]"
           >
             Request Investor Materials
           </a>

@@ -58,12 +58,12 @@ export default function PlatformSection() {
   const { ref, isVisible } = useInView();
 
   return (
-    <section id="platform" className="bg-[#0F1B35]">
-      <div className="h-1 w-full bg-[#4B8BF5]" />
+    <section id="platform" className="bg-[#162247]">
+      <div className="h-1 w-full bg-[#3B82F6]" />
 
       <div ref={ref} className="mx-auto max-w-7xl px-6 py-20 lg:py-28 text-center">
         <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#8AA8D8]">
+          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#4A6FA5]">
             OUR PLATFORM
           </p>
           <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
@@ -81,8 +81,8 @@ export default function PlatformSection() {
                 key={card.title}
                 className="rounded-xl bg-[#1A2A50] p-8 text-left"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4B8BF5]/20">
-                  <Icon className="size-6 text-[#4B8BF5]" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#3B82F6]/20">
+                  <Icon className="size-6 text-[#3B82F6]" />
                 </div>
                 <h3 className="mt-5 text-xl font-semibold text-white">
                   {card.title}
@@ -90,8 +90,8 @@ export default function PlatformSection() {
                 <ul className="mt-4 space-y-3">
                   {card.bullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#4B8BF5]" />
-                      <span className="text-sm leading-relaxed text-[#8AA8D8]">
+                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#3B82F6]" />
+                      <span className="text-sm leading-relaxed text-[#4A6FA5]">
                         {bullet}
                       </span>
                     </li>
@@ -107,7 +107,7 @@ export default function PlatformSection() {
         >
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {stats.map((stat, i) => (
-              <span key={stat} className="text-sm text-[#8AA8D8]">
+              <span key={stat} className="text-sm text-[#4A6FA5]">
                 {i > 0 && (
                   <span className="mr-6 hidden sm:inline" aria-hidden="true">
                     ·

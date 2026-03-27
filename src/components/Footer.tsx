@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="bg-dark">
@@ -7,14 +9,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Column 1 — Company info */}
           <div>
-            <p className="text-sm font-[family-name:var(--font-display)] uppercase tracking-[0.15em] text-white">
-              FRONTIER CAPITAL PARTNERS
-            </p>
+            <Image src="/brand/logo-dark.png" alt="Frontier Capital Partners" width={180} height={45} className="h-9 w-auto" />
             <p className="mt-4 text-sm leading-relaxed text-soft">
               Technology-driven capital for America&apos;s underserved small
               businesses.
             </p>
-            <p className="mt-4 text-sm text-muted">Miami, Florida</p>
+            <p className="mt-4 text-sm text-muted">
+              2669 S Bayshore Drive, Unit 1002
+              <br />
+              Miami, FL 33133
+            </p>
           </div>
 
           {/* Column 2 — Platform */}

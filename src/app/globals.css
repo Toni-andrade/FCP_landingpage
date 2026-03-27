@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
 @theme {
+  --color-deep: #162247;
   --color-navy: #213363;
-  --color-dark: #0F1B35;
-  --color-mid-navy: #2E4A8A;
-  --color-accent: #4B8BF5;
-  --color-soft: #8AA8D8;
-  --color-light-bg: #F0F3F8;
-  --color-card-bg: #F7F9FC;
-  --color-muted: #6B7B95;
+  --color-mid-navy: #2C4280;
+  --color-steel: #4A6FA5;
+  --color-accent: #3B82F6;
+  --color-ice: #E2E8F0;
+  --color-cloud: #F1F5F9;
+  --color-charcoal: #1E293B;
+  --color-slate: #64748B;
   --color-success: #2EAF6E;
   --color-alert: #E04D4D;
   --color-card-dark: #1A2A50;
+
+  /* Semantic aliases */
+  --color-dark: #162247;
+  --color-soft: #4A6FA5;
+  --color-light-bg: #F1F5F9;
+  --color-card-bg: #F8FAFC;
+  --color-muted: #64748B;
 }
 
 @layer base {
@@ -20,14 +28,14 @@
   }
 
   body {
-    font-family: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-family: 'Calibri', 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
     color: #213363;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, .font-display {
-    font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+    font-family: Georgia, 'DM Serif Display', 'Times New Roman', serif;
   }
 }
 
