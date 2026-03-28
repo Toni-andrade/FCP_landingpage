@@ -9,10 +9,10 @@ const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
   { label: "Your Portal", href: "#your-portal" },
   { label: "Why Frontier", href: "#why-frontier" },
-  { label: "For Investors", href: "#for-investors" },
 ];
 
 const APP_URL = "https://app.frontiercapital.us";
+const LOGIN_URL = "https://app.frontiercapital.us/login?redirect=%2F";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,7 +70,7 @@ export default function Header() {
           {/* Desktop buttons + mobile buttons */}
           <div className="flex items-center gap-3">
             <a
-              href={APP_URL}
+              href={LOGIN_URL}
               className="hidden sm:inline-flex items-center justify-center h-9 px-5 rounded-md border border-white/60 text-sm text-white hover:bg-white/10 transition-colors duration-200"
             >
               Log In
@@ -136,7 +136,7 @@ export default function Header() {
 
           <div className="flex flex-col gap-3 pt-6">
             <a
-              href={APP_URL}
+              href={LOGIN_URL}
               className="inline-flex items-center justify-center h-11 rounded-md border border-white/60 text-sm text-white hover:bg-white/10 transition-colors duration-200"
             >
               Log In

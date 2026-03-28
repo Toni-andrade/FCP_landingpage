@@ -6,7 +6,6 @@ import { HowItWorks } from "@/components/HowItWorks";
 import PortalShowcase from "@/components/PortalShowcase";
 import WhyFrontier from "@/components/WhyFrontier";
 import FAQ from "@/components/FAQ";
-import InvestorSection from "@/components/InvestorSection";
 import SecuritySection from "@/components/SecuritySection";
 import CTABand from "@/components/CTABand";
 import Footer from "@/components/Footer";
@@ -23,7 +22,6 @@ export default function Home() {
         <PortalShowcase />
         <WhyFrontier />
         <FAQ />
-        <InvestorSection />
         <SecuritySection />
         <CTABand />
       </main>

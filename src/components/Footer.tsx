@@ -68,14 +68,6 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#for-investors"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  For Investors
-                </a>
-              </li>
-              <li>
-                <a
                   href="#security"
                   className="text-sm text-soft hover:text-accent transition"
                 >
