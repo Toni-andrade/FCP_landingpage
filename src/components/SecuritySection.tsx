@@ -94,7 +94,7 @@ export default function SecuritySection() {
         <div className={`fade-up ${isVisible ? "visible" : ""}`}>
           <p className="mt-10 mx-auto max-w-3xl text-center text-sm text-muted">
             Frontier complies with CCPA, GLBA, and IRS record retention requirements.
-            MCA disclosure laws in 9 states (CA, NY, CT, UT, VA, FL, GA, KS, MO) are
+            Commercial funding disclosure laws in 9 states (CA, NY, CT, UT, VA, FL, GA, KS, MO) are
             fully integrated into our compliance infrastructure.
           </p>
         </div>

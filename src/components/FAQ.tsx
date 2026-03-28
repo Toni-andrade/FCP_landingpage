@@ -11,9 +11,9 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What is a Merchant Cash Advance?",
+    question: "How does revenue-based funding work?",
     answer:
-      "An MCA is a purchase of your future receivables \u2014 not a loan. We provide capital upfront, and you repay through a small percentage of your daily or weekly revenue. It\u2019s designed for businesses that need fast, flexible funding without the collateral and credit requirements of a bank loan.",
+      "We purchase a portion of your future receivables \u2014 it\u2019s not a loan. You receive capital upfront, and repay through a small percentage of your daily or weekly revenue. It\u2019s designed for businesses that need fast, flexible funding without the collateral and credit requirements of a traditional bank.",
   },
   {
     question: "Will applying affect my credit score?",

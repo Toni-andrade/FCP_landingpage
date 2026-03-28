@@ -22,13 +22,13 @@ const features: FeatureData[] = [
     title: "AI That Works for You",
     icon: Brain,
     description:
-      "Our underwriting analyzes 2,000+ data points across 7 risk factors \u2014 FICO, revenue trend, cash flow stability, fraud risk, time in business, industry risk, and MCA burden. Not a one-size-fits-all score.",
+      "Our underwriting analyzes 2,000+ data points across 7 risk factors \u2014 FICO, revenue trend, cash flow stability, fraud risk, time in business, industry risk, and existing obligations. Not a one-size-fits-all score.",
   },
   {
     title: "24-Hour Decisions",
     icon: Zap,
     description:
-      "Bank loans take 3\u20136 weeks. Broker-originated MCAs take days of back-and-forth. Our AI pipeline delivers a funding decision within 24 hours of a complete application.",
+      "Bank loans take 3\u20136 weeks. Broker-originated deals take days of back-and-forth. Our AI pipeline delivers a funding decision within 24 hours of a complete application.",
   },
   {
     title: "Revenue-Based Repayment",

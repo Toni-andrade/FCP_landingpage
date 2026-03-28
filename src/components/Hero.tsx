@@ -7,7 +7,7 @@ const APP_URL = "https://app.frontiercapital.us";
 const tickerStats = [
   "$150\u2013300B credit gap",
   "8.7M businesses declined annually",
-  "84% MCA approval rate vs. 14\u201330% at banks",
+  "84% approval rate vs. 14\u201330% at banks",
 ];
 
 export function Hero() {
