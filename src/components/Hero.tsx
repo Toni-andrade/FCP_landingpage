@@ -4,12 +4,6 @@ import { useEffect, useState } from "react";
 
 const APP_URL = "https://app.frontiercapital.us";
 
-const tickerStats = [
-  "$150\u2013300B credit gap",
-  "8.7M businesses declined annually",
-  "84% approval rate vs. 14\u201330% at banks",
-];
-
 export function Hero() {
   const [visible, setVisible] = useState(false);
 
@@ -113,25 +107,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom stat ticker */}
-      <div
-        className={`relative z-10 border-t border-white/10 bg-dark/60 backdrop-blur-sm transition-all duration-700 delay-500 ${
-          visible ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-y-2 px-6 py-5">
-          {tickerStats.map((stat, i) => (
-            <span
-              key={stat}
-              className={`px-5 text-sm font-medium text-soft/80 ${
-                i < tickerStats.length - 1 ? "border-r border-white/20" : ""
-              }`}
-            >
-              {stat}
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
