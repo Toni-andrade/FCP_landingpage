@@ -11,7 +11,6 @@ const navLinks = [
   { label: "Why Frontier", href: "#why-frontier" },
 ];
 
-const APP_URL = "https://app.frontiercapital.us";
 const LOGIN_URL = "https://app.frontiercapital.us/login?redirect=%2F";
 
 export default function Header() {
@@ -76,7 +75,7 @@ export default function Header() {
               Log In
             </a>
             <a
-              href={APP_URL}
+              href="https://apply.frontiercapital.us/apply"
               className="inline-flex items-center justify-center h-9 px-5 rounded-md bg-[#4B8BF5] text-sm font-semibold text-white hover:bg-[#4B8BF5]/85 transition-colors duration-200"
             >
               Apply Now
@@ -142,7 +141,7 @@ export default function Header() {
               Log In
             </a>
             <a
-              href={APP_URL}
+              href="https://apply.frontiercapital.us/apply"
               className="inline-flex items-center justify-center h-11 rounded-md bg-[#4B8BF5] text-sm font-semibold text-white hover:bg-[#4B8BF5]/85 transition-colors duration-200"
             >
               Apply Now

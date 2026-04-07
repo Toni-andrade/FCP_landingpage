@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-const APP_URL = "https://app.frontiercapital.us";
 
 export function Hero() {
   const [visible, setVisible] = useState(false);
@@ -83,7 +82,7 @@ export function Hero() {
             }`}
           >
             <a
-              href={APP_URL}
+              href="https://apply.frontiercapital.us/apply"
               className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-mid-navy hover:shadow-lg hover:scale-[1.02]"
             >
               Apply for Funding

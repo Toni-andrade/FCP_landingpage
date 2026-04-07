@@ -10,7 +10,7 @@ export default function CTABand() {
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://app.frontiercapital.us"
+            href="https://apply.frontiercapital.us/apply"
             className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:bg-mid-navy hover:scale-[1.02]"
           >
             Apply for Funding

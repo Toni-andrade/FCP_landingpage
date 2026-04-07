@@ -45,7 +45,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://app.frontiercapital.us"
+                  href="https://apply.frontiercapital.us/apply"
                   className="text-sm text-soft hover:text-accent transition"
                 >
                   Apply Now
