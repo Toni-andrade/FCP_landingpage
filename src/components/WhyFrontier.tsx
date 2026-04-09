@@ -1,58 +1,41 @@
 "use client";
 
 import { useInView } from "@/lib/useInView";
-import {
-  Brain,
-  Zap,
-  TrendingUp,
-  Shield,
-  Monitor,
-  BadgeDollarSign,
-} from "lucide-react";
+import { Wallet, Zap, ShieldCheck, Handshake } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-interface FeatureData {
+interface Pillar {
   title: string;
   description: string;
   icon: LucideIcon;
+  highlighted?: boolean;
 }
 
-const features: FeatureData[] = [
+const pillars: Pillar[] = [
   {
-    title: "AI That Works for You",
-    icon: Brain,
+    title: "Revenue-first",
+    icon: Wallet,
     description:
-      "Our underwriting analyzes 2,000+ data points across 7 risk factors \u2014 FICO, revenue trend, cash flow stability, fraud risk, time in business, industry risk, and existing obligations. Not a one-size-fits-all score.",
+      "No fixed monthly burdens. We scale our expectations to your actual earnings, providing flexibility when you need it most.",
   },
   {
-    title: "24-Hour Decisions",
+    title: "24-hour speed",
     icon: Zap,
+    highlighted: true,
     description:
-      "Bank loans take 3\u20136 weeks. Broker-originated deals take days of back-and-forth. Our AI pipeline delivers a funding decision within 24 hours of a complete application.",
+      "From initial connection to final deposit in under one business day. Capital at the speed of your growth.",
   },
   {
-    title: "Revenue-Based Repayment",
-    icon: TrendingUp,
+    title: "Clear & Honest",
+    icon: ShieldCheck,
     description:
-      "Your payments flex with your actual business performance. Seasonal slowdown? You pay less. Big month? You pay more. Because your cash flow isn\u2019t a straight line.",
+      "No hidden fees. No compounding interest traps. Just transparent growth capital structured for your success.",
   },
   {
-    title: "Your Data, Protected",
-    icon: Shield,
+    title: "Institutional partner",
+    icon: Handshake,
     description:
-      "AES-256 encryption, mandatory two-factor authentication, row-level database security on every table. Your financial data is treated like what it is \u2014 the most sensitive information your business has.",
-  },
-  {
-    title: "A Portal, Not a Phone Number",
-    icon: Monitor,
-    description:
-      "No calling in to check your balance. No emailing for a payment schedule. Your dedicated Client Portal gives you 24/7 visibility into your funding, documents, and business health.",
-  },
-  {
-    title: "No Hidden Costs",
-    icon: BadgeDollarSign,
-    description:
-      "Your total repayment amount is clear from day one. No origination fees buried in fine print, no prepayment penalties, no surprises. We\u2019ll tell you exactly what the funding costs before you sign anything.",
+      "We provide the network, strategic guidance, and expertise to help you deploy capital effectively in competitive markets.",
   },
 ];
 
@@ -60,33 +43,49 @@ export default function WhyFrontier() {
   const { ref, isVisible } = useInView();
 
   return (
-    <section id="why-frontier" className="bg-light-bg">
-      <div ref={ref} className="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
-        <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="section-label">Why Frontier</p>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-navy">
-            What Makes Us Different
+    <section id="why-frontier" className="py-32 lg:py-40 bg-surface-container-low">
+      <div ref={ref} className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className={`text-center mb-20 lg:mb-24 fade-up ${isVisible ? "visible" : ""}`}>
+          <h2 className="font-headline text-5xl md:text-6xl text-primary font-light">
+            Better terms for better businesses.
           </h2>
         </div>
 
         <div
-          className={`mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-up-children ${isVisible ? "visible" : ""}`}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 fade-up-children ${
+            isVisible ? "visible" : ""
+          }`}
         >
-          {features.map((feature) => {
-            const Icon = feature.icon;
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
             return (
               <div
-                key={feature.title}
-                className="rounded-lg bg-white p-6 shadow-[0_2px_12px_rgba(33,51,99,0.08)]"
+                key={pillar.title}
+                className={
+                  pillar.highlighted
+                    ? "bg-primary text-on-primary rounded-xl shadow-2xl shadow-primary/20 flex flex-col p-10 lg:p-12 transform lg:-translate-y-4"
+                    : "bg-white rounded-xl border border-outline-variant/10 shadow-sm flex flex-col p-10 lg:p-12 group hover:shadow-xl transition-all duration-500"
+                }
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy">
-                  <Icon className="size-5 text-white" />
-                </div>
-                <h3 className="mt-4 text-lg font-bold text-navy">
-                  {feature.title}
+                <Icon
+                  className={`size-9 mb-10 ${
+                    pillar.highlighted ? "text-secondary-container" : "text-secondary"
+                  }`}
+                  strokeWidth={1.5}
+                />
+                <h3
+                  className={`font-headline text-2xl md:text-3xl mb-5 ${
+                    pillar.highlighted ? "text-white" : "text-primary"
+                  }`}
+                >
+                  {pillar.title}
                 </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                  {feature.description}
+                <p
+                  className={`leading-relaxed ${
+                    pillar.highlighted ? "text-primary-fixed/70" : "text-on-surface-variant"
+                  }`}
+                >
+                  {pillar.description}
                 </p>
               </div>
             );

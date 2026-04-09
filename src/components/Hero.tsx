@@ -1,111 +1,94 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
+const APPLY_URL = "https://apply.frontiercapital.us/apply";
 
 export function Hero() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 150);
+    const timer = setTimeout(() => setVisible(true), 120);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col bg-dark overflow-hidden">
-      {/* Subtle animated dot grid */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-      >
+    <header className="relative min-h-[95vh] flex items-center pt-32 pb-20 overflow-hidden bg-surface">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        {/* Text column */}
         <div
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(75,139,245,0.6) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-            animation: "drift 20s linear infinite",
-          }}
-        />
-        <style>{`
-          @keyframes drift {
-            from { transform: translate(0, 0); }
-            to { transform: translate(40px, 40px); }
-          }
-        `}</style>
-      </div>
-
-      {/* Grain texture overlay */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* Main content */}
-      <div className="relative z-10 flex flex-1 items-center justify-center pt-20">
-        <div className="mx-auto w-full max-w-[1200px] px-6 text-center">
-          <p
-            className={`section-label-light transition-all duration-700 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            Capital for Every Business
-          </p>
-
-          <h1
-            className={`mt-6 font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-[56px] font-bold leading-[1.1] text-white transition-all duration-700 delay-100 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            Your Business Deserves
-            <br />
-            <em className="italic text-soft">Better</em> Than a Bank Rejection
+          className={`space-y-10 transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <h1 className="font-headline text-6xl sm:text-7xl lg:text-[110px] font-light leading-[0.9] tracking-tighter text-primary">
+            Capital that <br />
+            <span className="italic font-normal">understands</span> your
+            business.
           </h1>
 
-          <p
-            className={`mt-6 mx-auto max-w-2xl text-lg md:text-xl leading-relaxed text-soft transition-all duration-700 delay-200 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            AI-powered funding decisions in 24 hours.
-            $25K&ndash;$250K in working capital based on your actual revenue&nbsp;&mdash;
-            not an arbitrary credit score.
+          <p className="text-xl text-on-surface-variant max-w-lg leading-relaxed">
+            Moving beyond traditional constraints. We provide
+            institutional-grade growth capital tailored to the rhythm of modern
+            revenue.
           </p>
 
-          {/* Dual CTAs */}
-          <div
-            className={`mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-300 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
+          <div className="flex flex-col sm:flex-row sm:items-center gap-8 sm:gap-10 pt-4">
             <a
-              href="https://apply.frontiercapital.us/apply"
-              className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-mid-navy hover:shadow-lg hover:scale-[1.02]"
+              href={APPLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-on-primary px-10 py-5 rounded font-medium inline-flex items-center gap-3 group transition-all duration-300 hover:bg-primary-container shadow-xl shadow-primary/10 self-start sm:self-auto"
             >
-              Apply for Funding
+              Begin Your Journey
+              <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="#how-it-works"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:border-white hover:bg-white/5"
+              href="mailto:info@frontiercapitalpartners.us"
+              className="font-mono text-xs uppercase tracking-[0.3em] text-primary border-b border-primary/20 pb-1 hover:border-primary transition-colors self-start sm:self-auto"
             >
-              See How It Works
+              Connect With Us
             </a>
           </div>
+        </div>
 
-          {/* Reassurance line */}
-          <p
-            className={`mt-5 text-sm text-muted transition-all duration-700 delay-400 ${
-              visible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            No impact to your credit score &middot; 5-minute application &middot; Funds as fast as 24 hours
-          </p>
+        {/* Image column */}
+        <div
+          className={`relative transition-all duration-1000 delay-200 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="aspect-[4/5] lg:aspect-[1.1/1] bg-surface-container-low rounded-xl relative overflow-hidden shadow-2xl shadow-primary/10">
+            <Image
+              src="/brand/stitch-hero-architecture.png"
+              alt="Institutional modern architecture"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover grayscale brightness-110 hover:grayscale-0 transition-all duration-1000"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
+          </div>
+
+          {/* Real-time signal data card */}
+          <div className="absolute -bottom-8 -left-6 sm:-left-12 bg-white/95 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-[0_32px_64px_-16px_rgba(7,29,77,0.18)] border border-outline-variant/10 max-w-xs z-20">
+            <div className="flex items-center justify-between mb-4">
+              <span className="font-mono text-[10px] uppercase text-outline tracking-widest">
+                Real-time Signal
+              </span>
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+            </div>
+            <div className="font-headline text-3xl sm:text-4xl text-primary mb-1">
+              $250,000.00
+            </div>
+            <div className="text-[10px] text-on-surface-variant font-mono uppercase tracking-tight">
+              Max liquidity threshold reached
+            </div>
+          </div>
         </div>
       </div>
-
-    </section>
+    </header>
   );
 }

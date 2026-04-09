@@ -1,102 +1,91 @@
 "use client";
 
 import { useInView } from "@/lib/useInView";
-import {
-  ShieldCheck,
-  Lock,
-  Database,
-  BadgeCheck,
-  ShieldX,
-  UserCheck,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
-interface SecurityCard {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-}
-
-const cards: SecurityCard[] = [
-  {
-    icon: ShieldCheck,
-    title: "Zero Trust Architecture",
-    description: "MFA mandatory, session validated per request.",
-  },
-  {
-    icon: Lock,
-    title: "AES-256 Encryption",
-    description:
-      "All data encrypted at rest (AES-256) and in transit (TLS 1.2+).",
-  },
-  {
-    icon: Database,
-    title: "Row-Level Security",
-    description: "Database-level access policies on all 50+ tables.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "SOC 2 Infrastructure",
-    description:
-      "Supabase, Vercel, Plaid, Resend \u2014 all SOC 2 Type II certified.",
-  },
-  {
-    icon: ShieldX,
-    title: "No Data Sales",
-    description:
-      "We never sell your personal or financial information.",
-  },
-  {
-    icon: UserCheck,
-    title: "Your Rights",
-    description:
-      "Access, correct, delete, disconnect, or export your data at any time.",
-  },
+const signals = [
+  { label: "Data Velocity", value: "Ultra High Frequency" },
+  { label: "Risk Modeling", value: "Dynamic Assessment" },
 ];
 
 export default function SecuritySection() {
   const { ref, isVisible } = useInView();
 
   return (
-    <section id="security" className="bg-light-bg">
-      <div ref={ref} className="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
-        <div className={`text-center fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="section-label">Security & Trust</p>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-navy">
-            Your Data. Our Responsibility.
-          </h2>
-        </div>
+    <section
+      id="frontier-engine"
+      className="py-32 lg:py-40 bg-tertiary-container relative overflow-hidden"
+    >
+      {/* Subtle noise overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
+      />
 
+      <div
+        ref={ref}
+        className="max-w-7xl mx-auto px-6 sm:px-8 grid md:grid-cols-2 gap-20 lg:gap-32 items-center relative z-20"
+      >
+        {/* Text column */}
         <div
-          className={`mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 fade-up-children ${isVisible ? "visible" : ""}`}
+          className={`space-y-10 lg:space-y-12 fade-up ${
+            isVisible ? "visible" : ""
+          }`}
         >
-          {cards.map((card) => {
-            const Icon = card.icon;
-            return (
+          <div className="inline-block border-l-2 border-secondary-container pl-6 lg:pl-8 py-3">
+            <div className="font-headline text-4xl md:text-5xl lg:text-6xl text-white font-light mb-4 leading-tight">
+              Relationship &amp; <br />
+              Growth
+            </div>
+            <h3 className="font-headline text-xl md:text-2xl text-on-tertiary-container italic opacity-70">
+              Powered by The Frontier Engine
+            </h3>
+          </div>
+
+          <p className="text-on-tertiary-container leading-relaxed text-xl lg:text-2xl font-light">
+            Our proprietary analytical stack doesn&apos;t just read spreadsheets;
+            it reads momentum. By synthesizing thousands of revenue signals, we
+            uncover the value that traditional institutions ignore.
+          </p>
+
+          <div className="space-y-8 max-w-md pt-6">
+            {signals.map((signal) => (
               <div
-                key={card.title}
-                className="rounded-lg bg-white p-6 shadow-[0_2px_12px_rgba(33,51,99,0.08)]"
+                key={signal.label}
+                className="flex justify-between items-end border-b border-white/10 pb-4"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy">
-                  <Icon className="size-5 text-white" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-navy">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                  {card.description}
-                </p>
+                <span className="font-mono text-xs uppercase text-white/40 tracking-[0.3em]">
+                  {signal.label}
+                </span>
+                <span className="font-mono text-sm text-secondary-container">
+                  {signal.value}
+                </span>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
-        <div className={`fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="mt-10 mx-auto max-w-3xl text-center text-sm text-muted">
-            Frontier complies with CCPA, GLBA, and IRS record retention requirements.
-            Commercial funding disclosure laws in 9 states (CA, NY, CT, UT, VA, FL, GA, KS, MO) are
-            fully integrated into our compliance infrastructure.
-          </p>
+        {/* Precision index column */}
+        <div
+          className={`relative flex items-center justify-center fade-up ${
+            isVisible ? "visible" : ""
+          }`}
+        >
+          <div className="aspect-square w-full max-w-lg flex items-center justify-center relative">
+            <div className="absolute inset-0 border border-white/5 rounded-3xl rotate-45" />
+            <div className="absolute inset-8 border border-white/10 rounded-3xl -rotate-12" />
+            <div className="relative z-10 text-center space-y-2">
+              <div className="font-headline text-7xl md:text-8xl text-white font-light">
+                98.4%
+              </div>
+              <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.5em] text-secondary-container font-bold">
+                Precision Index
+              </div>
+            </div>
+            <div className="absolute bottom-12 left-12 w-4 h-4 bg-secondary-container rounded-full animate-pulse shadow-[0_0_30px_#82c1fd]" />
+          </div>
         </div>
       </div>
     </section>

@@ -1,277 +1,217 @@
 "use client";
 
-import { useState } from "react";
 import { useInView } from "@/lib/useInView";
-import {
-  LayoutDashboard,
-  Landmark,
-  FileText,
-  Bell,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
-interface TabData {
-  id: string;
-  label: string;
-  icon: LucideIcon;
-  description: string;
-  bullets: string[];
-}
-
-const tabs: TabData[] = [
-  {
-    id: "dashboard",
-    label: "Dashboard & Payments",
-    icon: LayoutDashboard,
-    description:
-      "Track your funding balance, view upcoming payments, and see exactly where you stand \u2014 in real time. No surprises. No phone calls required. Your payment schedule adjusts to your actual revenue.",
-    bullets: [
-      "Real-time balance and payment tracking",
-      "Daily/weekly ACH payment history",
-      "Deal status visibility (active, paused, completed)",
-      "Payment schedule with projected completion date",
-    ],
-  },
-  {
-    id: "bank",
-    label: "Bank Connection",
-    icon: Landmark,
-    description:
-      "Securely link your business bank account once. We monitor your balances and cash flow daily \u2014 not to spy, but to protect you. If your coverage drops, we flag it before it becomes a problem.",
-    bullets: [
-      "Plaid-secured bank connection (AES-256 encrypted)",
-      "Daily balance monitoring",
-      "5-factor risk assessment (coverage, NSF, trend, late payments, negative days)",
-      "Disconnect at any time \u2014 you\u2019re always in control",
-    ],
-  },
-  {
-    id: "documents",
-    label: "Documents & Requests",
-    icon: FileText,
-    description:
-      "Upload tax returns, bank statements, and business documents in one secure place. Request additional funding, payment pauses, or early payoffs directly through your portal.",
-    bullets: [
-      "13 document categories with secure upload",
-      "Request new funding or payment modifications",
-      "Track request status in real time",
-      "Complete audit trail of all portal activity",
-    ],
-  },
-  {
-    id: "alerts",
-    label: "Alerts & Notifications",
-    icon: Bell,
-    description:
-      "We keep you informed \u2014 not overwhelmed. Email and SMS alerts for what matters: payment confirmations, balance changes, and risk escalations.",
-    bullets: [
-      "Payment confirmation notifications",
-      "Low balance early warnings",
-      "Document request alerts",
-      "Risk status change notifications",
-    ],
-  },
+const metricCards = [
+  { label: "Outstanding", value: "$87,450" },
+  { label: "Next Draw", value: "$12,000" },
+  { label: "Facility", value: "Active" },
 ];
 
-function DashboardMockup({ activeTab }: { activeTab: string }) {
-  return (
-    <div className="rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
-      {activeTab === "dashboard" && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="h-3 w-24 rounded bg-white/10" />
-            <div className="h-6 w-20 rounded-full bg-success/20 flex items-center justify-center">
-              <span className="text-[10px] font-bold text-success">ACTIVE</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-lg bg-white/5 p-4 border border-white/5">
-              <p className="text-[10px] uppercase tracking-widest text-soft/60">Balance</p>
-              <p className="mt-1 font-[family-name:var(--font-display)] text-2xl text-white">$87,450</p>
-            </div>
-            <div className="rounded-lg bg-white/5 p-4 border border-white/5">
-              <p className="text-[10px] uppercase tracking-widest text-soft/60">Next Payment</p>
-              <p className="mt-1 font-[family-name:var(--font-display)] text-2xl text-white">$485</p>
-            </div>
-          </div>
-          <div className="space-y-2">
-            {[75, 60, 85, 45, 70].map((w, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="h-2 w-2 rounded-full bg-accent/60" />
-                <div className="h-2 rounded bg-white/10 flex-1" style={{ maxWidth: `${w}%` }} />
-                <div className="h-2 w-12 rounded bg-white/5" />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      {activeTab === "bank" && (
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-accent/20 flex items-center justify-center">
-              <Landmark className="size-5 text-accent" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-white">Business Checking ****4821</p>
-              <p className="text-xs text-soft/60">Connected via Plaid</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {["Coverage", "NSF Risk", "Trend"].map((label) => (
-              <div key={label} className="rounded-lg bg-white/5 p-3 border border-white/5 text-center">
-                <p className="text-[10px] uppercase tracking-widest text-soft/60">{label}</p>
-                <div className="mt-1 mx-auto h-8 w-8 rounded-full bg-success/20 flex items-center justify-center">
-                  <span className="text-xs font-bold text-success">&#10003;</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="h-20 rounded-lg bg-white/5 border border-white/5 p-3">
-            <p className="text-[10px] uppercase tracking-widest text-soft/60 mb-2">Daily Balance (30d)</p>
-            <svg viewBox="0 0 200 40" className="w-full h-8" aria-hidden="true">
-              <polyline
-                points="0,30 20,25 40,28 60,20 80,22 100,15 120,18 140,12 160,10 180,14 200,8"
-                fill="none"
-                stroke="#4B8BF5"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-        </div>
-      )}
-      {activeTab === "documents" && (
-        <div className="space-y-3">
-          {[
-            { name: "Q4 Bank Statements", status: "Uploaded", color: "text-success" },
-            { name: "2025 Tax Return", status: "Uploaded", color: "text-success" },
-            { name: "Business License", status: "Requested", color: "text-accent" },
-            { name: "Voided Check", status: "Pending", color: "text-soft/60" },
-          ].map((doc) => (
-            <div key={doc.name} className="flex items-center justify-between rounded-lg bg-white/5 border border-white/5 p-3">
-              <div className="flex items-center gap-3">
-                <FileText className="size-4 text-soft/40" />
-                <span className="text-sm text-white">{doc.name}</span>
-              </div>
-              <span className={`text-xs font-medium ${doc.color}`}>{doc.status}</span>
-            </div>
-          ))}
-        </div>
-      )}
-      {activeTab === "alerts" && (
-        <div className="space-y-3">
-          {[
-            { msg: "Payment of $485.00 confirmed", time: "Today, 9:15 AM", dot: "bg-success" },
-            { msg: "Balance coverage above threshold", time: "Yesterday", dot: "bg-success" },
-            { msg: "New document request: Voided Check", time: "Mar 24", dot: "bg-accent" },
-            { msg: "Weekly payment processed", time: "Mar 21", dot: "bg-success" },
-          ].map((alert) => (
-            <div key={alert.msg} className="flex items-start gap-3 rounded-lg bg-white/5 border border-white/5 p-3">
-              <div className={`mt-1.5 h-2 w-2 rounded-full ${alert.dot} shrink-0`} />
-              <div>
-                <p className="text-sm text-white">{alert.msg}</p>
-                <p className="text-xs text-soft/60 mt-0.5">{alert.time}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
+const barHeights = [42, 58, 35, 74, 52, 81, 48, 69, 91, 76, 84, 96];
 
 export default function PortalShowcase() {
-  const [activeTab, setActiveTab] = useState("dashboard");
   const { ref, isVisible } = useInView();
 
-  const active = tabs.find((t) => t.id === activeTab)!;
-  const ActiveIcon = active.icon;
-
   return (
-    <section id="your-portal" className="bg-dark">
-      <div className="h-1 w-full bg-accent" />
-      <div ref={ref} className="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
-        <div className={`text-center fade-up ${isVisible ? "visible" : ""}`}>
-          <p className="section-label-light">Your Portal</p>
-          <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
-            More Than a Lender. Your <em className="italic text-soft">Financial</em> Partner.
+    <section
+      id="your-portal"
+      className="relative py-32 lg:py-40 bg-primary overflow-hidden"
+    >
+      {/* Ambient grid + noise for depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(180,197,254,0.6) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      <div
+        ref={ref}
+        className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 grid lg:grid-cols-[1fr_1.15fr] gap-16 lg:gap-20 items-center"
+      >
+        {/* Text column */}
+        <div
+          className={`space-y-10 fade-up ${isVisible ? "visible" : ""}`}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-secondary-container animate-pulse" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-fixed/70">
+              Our Platform
+            </span>
+          </div>
+
+          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-white font-light leading-[1.05] tracking-tight">
+            The discipline of a bank.{" "}
+            <span className="block">The speed of a fintech.</span>
+            <span className="block italic text-primary-fixed">
+              The heart of a partner.
+            </span>
           </h2>
-          <p className="mt-4 mx-auto max-w-2xl text-[15px] leading-relaxed text-soft">
-            Every Frontier client gets a dedicated portal to manage their funding,
-            monitor their business health, and stay in control.
+
+          <p className="text-lg lg:text-xl text-primary-fixed/70 leading-relaxed max-w-lg font-light">
+            Every Frontier client opens the same portal our underwriters use.
+            Live balance, upcoming draws, repayment schedule, and risk
+            signals&mdash;rendered with institutional clarity. One surface for
+            every moment of the relationship. Zero phone tag.
           </p>
         </div>
 
-        {/* Tabs */}
-        <div className={`mt-12 fade-up ${isVisible ? "visible" : ""}`}>
+        {/* Monitor mockup column */}
+        <div
+          className={`relative fade-up ${isVisible ? "visible" : ""}`}
+        >
+          {/* Ambient glow behind screen */}
           <div
-            className="flex flex-wrap justify-center gap-2"
-            role="tablist"
-            aria-label="Portal features"
-          >
-            {tabs.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = tab.id === activeTab;
-              return (
-                <button
-                  key={tab.id}
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-controls={`panel-${tab.id}`}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
-                    isActive
-                      ? "bg-accent text-white shadow-md"
-                      : "bg-white/5 text-soft hover:bg-white/10 hover:text-white"
-                  }`}
-                >
-                  <Icon className="size-4" />
-                  <span className="hidden sm:inline">{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
+            aria-hidden="true"
+            className="absolute -inset-10 bg-secondary/20 blur-[100px] rounded-full"
+          />
 
-          {/* Tab content */}
-          <div
-            id={`panel-${activeTab}`}
-            role="tabpanel"
-            className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
-          >
-            {/* Left — text */}
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/20">
-                  <ActiveIcon className="size-5 text-accent" />
+          {/* Monitor bezel */}
+          <div className="relative rounded-2xl p-[10px] bg-gradient-to-b from-[#1a2450] via-[#0d1634] to-[#070f26] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.06)_inset]">
+            {/* Top bezel camera dot */}
+            <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white/15" />
+
+            {/* Screen */}
+            <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-[#0a1530] to-[#050b1f] aspect-[16/10]">
+              {/* Subtle screen reflection */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent pointer-events-none"
+              />
+
+              {/* Dashboard chrome */}
+              <div className="relative z-10 h-full flex flex-col p-5 lg:p-6 gap-4">
+                {/* Header */}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-secondary-container/60">
+                      Dashboard
+                    </div>
+                    <div className="font-headline text-xl lg:text-2xl text-white mt-1 font-light">
+                      Good morning,{" "}
+                      <span className="italic text-primary-fixed">Maria</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-300">
+                      Live
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-white">{active.label}</h3>
+
+                {/* Metric cards */}
+                <div className="grid grid-cols-3 gap-2.5">
+                  {metricCards.map((card) => (
+                    <div
+                      key={card.label}
+                      className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-3 backdrop-blur-sm"
+                    >
+                      <div className="font-mono text-[8px] uppercase tracking-[0.15em] text-white/40">
+                        {card.label}
+                      </div>
+                      <div className="font-headline text-white text-base lg:text-lg mt-1.5 font-normal">
+                        {card.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Chart row */}
+                <div className="grid grid-cols-5 gap-2.5 flex-1 min-h-0">
+                  {/* Bar chart — 3/5 */}
+                  <div className="col-span-3 rounded-lg bg-white/[0.03] border border-white/[0.06] p-3 lg:p-4 flex flex-col backdrop-blur-sm">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="font-mono text-[8px] uppercase tracking-[0.15em] text-white/40">
+                        Revenue Velocity
+                      </div>
+                      <div className="font-mono text-[8px] text-secondary-container">
+                        +18.4%
+                      </div>
+                    </div>
+                    <div className="flex-1 flex items-end gap-1">
+                      {barHeights.map((h, i) => (
+                        <div
+                          key={i}
+                          className="flex-1 bg-gradient-to-t from-secondary/40 via-secondary-container/70 to-secondary-container rounded-[1px]"
+                          style={{ height: `${h}%` }}
+                        />
+                      ))}
+                    </div>
+                    <div className="flex justify-between mt-2">
+                      <span className="font-mono text-[7px] text-white/25">
+                        JAN
+                      </span>
+                      <span className="font-mono text-[7px] text-white/25">
+                        DEC
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Donut chart — 2/5 */}
+                  <div className="col-span-2 rounded-lg bg-white/[0.03] border border-white/[0.06] p-3 lg:p-4 flex flex-col backdrop-blur-sm">
+                    <div className="font-mono text-[8px] uppercase tracking-[0.15em] text-white/40 mb-2">
+                      Health Score
+                    </div>
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="relative w-[72px] h-[72px] lg:w-20 lg:h-20">
+                        <svg
+                          viewBox="0 0 100 100"
+                          className="w-full h-full -rotate-90"
+                          aria-hidden="true"
+                        >
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            stroke="rgba(255,255,255,0.08)"
+                            strokeWidth="10"
+                            fill="none"
+                          />
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            stroke="#82c1fd"
+                            strokeWidth="10"
+                            strokeLinecap="round"
+                            fill="none"
+                            strokeDasharray="251.2"
+                            strokeDashoffset="35"
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center">
+                          <span className="font-headline text-white text-base lg:text-lg leading-none">
+                            86%
+                          </span>
+                          <span className="font-mono text-[7px] text-secondary-container mt-0.5">
+                            A+
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="text-[15px] leading-relaxed text-soft">
-                {active.description}
-              </p>
-              <ul className="mt-5 space-y-3">
-                {active.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                    <span className="text-sm leading-relaxed text-soft/80">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-
-            {/* Right — mockup */}
-            <DashboardMockup activeTab={activeTab} />
           </div>
-        </div>
 
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <a
-            href="https://app.frontiercapital.us"
-            className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:border-white hover:bg-white/5"
-          >
-            Access Your Portal
-          </a>
+          {/* Monitor neck + base */}
+          <div className="relative flex flex-col items-center">
+            <div className="w-16 h-5 bg-gradient-to-b from-[#141d3e] to-[#070f26] rounded-b-md" />
+            <div className="w-40 lg:w-56 h-1.5 bg-gradient-to-b from-[#141d3e] to-[#050a1c] rounded-full mt-0.5 shadow-[0_20px_30px_-10px_rgba(0,0,0,0.5)]" />
+          </div>
         </div>
       </div>
     </section>

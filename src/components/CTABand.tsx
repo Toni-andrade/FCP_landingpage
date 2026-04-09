@@ -1,28 +1,41 @@
+import Image from "next/image";
+
+const APPLY_URL = "https://apply.frontiercapital.us/apply";
+
 export default function CTABand() {
   return (
-    <section className="bg-navy py-20 lg:py-28 px-6 text-center">
-      <div className="mx-auto max-w-2xl">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl text-white">
-          Ready to Fund Your Next Chapter?
-        </h2>
-        <p className="mt-4 text-lg text-soft">
-          5-minute application. No credit score impact. Decision in 24 hours.
-        </p>
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="https://apply.frontiercapital.us/apply"
-            className="inline-flex items-center justify-center rounded-lg bg-accent px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:bg-mid-navy hover:scale-[1.02]"
-          >
-            Apply for Funding
-          </a>
-          <a
-            href="mailto:info@frontiercapitalpartners.us"
-            className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:border-white"
-          >
-            Questions? Contact Us
-          </a>
+    <section className="py-24 bg-primary relative overflow-hidden">
+      {/* Decorative brand mark */}
+      <Image
+        src="/brand/icon-white-outline.png"
+        alt=""
+        width={520}
+        height={520}
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 top-1/2 -translate-y-1/2 w-[380px] lg:w-[520px] h-auto opacity-15 select-none z-0"
+      />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-12 relative z-20">
+        <div className="space-y-4 text-center md:text-left">
+          <h2 className="font-headline text-4xl md:text-5xl text-white font-light tracking-tight">
+            Your bank says no,{" "}
+            <span className="italic text-primary-fixed">we look deeper.</span>
+          </h2>
+          <p className="text-primary-fixed/50 text-lg md:text-xl font-light">
+            Institutional finance, reimagined for modern growth.
+          </p>
         </div>
+        <a
+          href={APPLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-white text-primary px-12 py-5 rounded font-medium shadow-xl hover:bg-white/95 transition-all duration-300 transform hover:-translate-y-1 whitespace-nowrap relative z-10"
+        >
+          Apply for Funding
+        </a>
       </div>
+
+      <div className="absolute top-1/2 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
     </section>
   );
 }

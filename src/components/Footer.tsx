@@ -1,149 +1,87 @@
 import Image from "next/image";
+import { Mail, Share2 } from "lucide-react";
+
+interface FooterColumn {
+  heading: string;
+  links: { label: string; href: string }[];
+}
+
+const columns: FooterColumn[] = [
+  {
+    heading: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
+    ],
+  },
+  {
+    heading: "Compliance",
+    links: [
+      { label: "Regulatory", href: "#" },
+      { label: "Security", href: "#frontier-engine" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "About Us", href: "#" },
+      { label: "Contact", href: "mailto:info@frontiercapitalpartners.us" },
+    ],
+  },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-dark">
-      <div className="mx-auto max-w-[1200px] px-6 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1 — Company info */}
-          <div>
-            <Image
-              src="/brand/logo-dark.png"
-              alt="Frontier Capital Partners"
-              width={180}
-              height={45}
-              className="h-9 w-auto"
-            />
-            <p className="mt-4 text-sm leading-relaxed text-soft">
-              Technology-driven capital for America&apos;s underserved small
-              businesses.
-            </p>
-            <p className="mt-4 text-sm text-muted">Miami, Florida</p>
-          </div>
-
-          {/* Column 2 — For Businesses */}
-          <div>
-            <p className="mb-4 text-sm font-semibold text-white">
-              For Businesses
-            </p>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#how-it-works"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  How It Works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#your-portal"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Your Portal
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://apply.frontiercapital.us/apply"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Apply Now
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3 — Company */}
-          <div>
-            <p className="mb-4 text-sm font-semibold text-white">Company</p>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#security"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Security
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#security"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Careers
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4 — Legal */}
-          <div>
-            <p className="mb-4 text-sm font-semibold text-white">Legal</p>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Client Data Practices
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@frontiercapitalpartners.us"
-                  className="text-sm text-soft hover:text-accent transition"
-                >
-                  Contact Us
-                </a>
-              </li>
-            </ul>
+    <footer className="w-full py-20 lg:py-24 bg-white border-t border-outline-variant/10 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-16 pb-16 lg:pb-20 border-b border-outline-variant/10">
+          <Image
+            src="/brand/logo-light-transparent.png"
+            alt="Frontier Capital Partners"
+            width={200}
+            height={50}
+            className="h-10 w-auto object-contain"
+          />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-24">
+            {columns.map((col) => (
+              <div key={col.heading} className="flex flex-col gap-6">
+                <span className="font-mono text-[10px] uppercase text-outline tracking-[0.3em] font-bold">
+                  {col.heading}
+                </span>
+                {col.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="font-headline text-lg lg:text-xl text-primary hover:text-secondary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between border-t border-white/10 pt-8 text-sm text-muted">
-          <p>
+        <div className="pt-10 lg:pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-outline">
             &copy; 2026 Frontier Capital Partners LLC. All rights reserved.
-          </p>
-          <a
-            href="mailto:info@frontiercapitalpartners.us"
-            className="mt-4 md:mt-0 hover:text-accent transition"
-          >
-            info@frontiercapitalpartners.us
-          </a>
+          </div>
+          <div className="flex gap-8">
+            <a
+              href="#"
+              aria-label="Share"
+              className="text-primary hover:text-secondary transition-colors"
+            >
+              <Share2 className="size-5" />
+            </a>
+            <a
+              href="mailto:info@frontiercapitalpartners.us"
+              aria-label="Email"
+              className="text-primary hover:text-secondary transition-colors"
+            >
+              <Mail className="size-5" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,6 +1,38 @@
 @import "tailwindcss";
 
 @theme {
+  /* Material Design 3 palette — Frontier institutional */
+  --color-primary: #071d4d;
+  --color-primary-container: #213363;
+  --color-on-primary: #ffffff;
+  --color-primary-fixed: #dbe1ff;
+  --color-primary-fixed-dim: #b4c5fe;
+
+  --color-secondary: #136299;
+  --color-secondary-container: #82c1fd;
+  --color-on-secondary: #ffffff;
+
+  --color-tertiary: #1e1e32;
+  --color-tertiary-container: #333349;
+  --color-on-tertiary-container: #9d9bb5;
+
+  --color-surface: #f8f9fd;
+  --color-surface-bright: #f8f9fd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f3f7;
+  --color-surface-container: #edeef2;
+  --color-surface-container-high: #e7e8ec;
+  --color-surface-container-highest: #e1e2e6;
+
+  --color-on-surface: #191c1f;
+  --color-on-surface-variant: #45464f;
+
+  --color-outline: #757680;
+  --color-outline-variant: #c5c6d0;
+
+  --color-error: #ba1a1a;
+
+  /* LP2 legacy palette (coexists with Material Design tokens — no name collisions) */
   --color-navy: #213363;
   --color-dark: #0F1B35;
   --color-mid-navy: #2E4A8A;
@@ -11,6 +43,12 @@
   --color-muted: #6B7B95;
   --color-success: #2EAF6E;
   --color-alert: #E04D4D;
+
+  /* Typography — bridged with next/font CSS variables */
+  --font-headline: var(--font-newsreader), "Newsreader", Georgia, serif;
+  --font-body: var(--font-manrope), "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
 }
 
 @layer base {
@@ -19,17 +57,15 @@
   }
 
   body {
-    font-family: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
-    color: #213363;
+    font-family: var(--font-body);
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  h1, h2, .font-display {
-    font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
-  }
 }
 
+/* LP2 legacy utilities */
 @layer utilities {
   .section-label {
     font-size: 0.8125rem;
@@ -60,11 +96,23 @@
   }
 }
 
+/* LP2 scoped root — sets DM Sans body + navy text for legacy components */
+.lp2-root {
+  font-family: var(--font-sans), 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  color: #213363;
+}
+
+.lp2-root h1,
+.lp2-root h2,
+.lp2-root .font-display {
+  font-family: var(--font-display), 'DM Serif Display', Georgia, serif;
+}
+
 /* Fade-up animation for scroll-triggered elements */
 .fade-up {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade-up.visible {
@@ -76,7 +124,7 @@
 .fade-up-children > * {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .fade-up-children.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
@@ -85,7 +133,3 @@
 .fade-up-children.visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
 .fade-up-children.visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
 .fade-up-children.visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
-.fade-up-children.visible > *:nth-child(7) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
-.fade-up-children.visible > *:nth-child(8) { transition-delay: 700ms; opacity: 1; transform: translateY(0); }
-.fade-up-children.visible > *:nth-child(9) { transition-delay: 800ms; opacity: 1; transform: translateY(0); }
-.fade-up-children.visible > *:nth-child(10) { transition-delay: 900ms; opacity: 1; transform: translateY(0); }
